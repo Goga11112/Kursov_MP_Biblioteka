@@ -41,6 +41,8 @@
             this.label6 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.Сохранить = new System.Windows.Forms.Button();
+            this.Kod_book = new System.Windows.Forms.TextBox();
+            this.label5 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // label1
@@ -143,7 +145,7 @@
             // Сохранить
             // 
             this.Сохранить.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.Сохранить.BackColor = System.Drawing.Color.Transparent;
+            this.Сохранить.BackColor = System.Drawing.Color.IndianRed;
             this.Сохранить.Cursor = System.Windows.Forms.Cursors.Hand;
             this.Сохранить.Location = new System.Drawing.Point(325, 201);
             this.Сохранить.Name = "Сохранить";
@@ -153,11 +155,31 @@
             this.Сохранить.UseVisualStyleBackColor = false;
             this.Сохранить.Click += new System.EventHandler(this.Сохранить_Click);
             // 
+            // Kod_book
+            // 
+            this.Kod_book.Location = new System.Drawing.Point(148, 214);
+            this.Kod_book.Name = "Kod_book";
+            this.Kod_book.Size = new System.Drawing.Size(100, 20);
+            this.Kod_book.TabIndex = 15;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(68, 217);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(18, 13);
+            this.label5.TabIndex = 16;
+            this.label5.Text = "ID";
+            this.label5.Click += new System.EventHandler(this.label5_Click);
+            // 
             // Addendum
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(573, 272);
+            this.BackColor = System.Drawing.Color.Brown;
+            this.ClientSize = new System.Drawing.Size(573, 293);
+            this.Controls.Add(this.label5);
+            this.Controls.Add(this.Kod_book);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.Nom_shkaf);
@@ -192,5 +214,7 @@
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Button Сохранить;
+        public System.Windows.Forms.TextBox Kod_book;
+        private System.Windows.Forms.Label label5;
     }
 }

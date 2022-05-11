@@ -21,13 +21,32 @@ namespace Курсовая_работа_по_методам_программир
 
         private void button1_Click(object sender, EventArgs e)
         {
-            int god_zadan = int.Parse(textBox1.Text.Split('.')[2]);
+            table2 table = new table2();
+
             List<DataGridViewRow> list = new List<DataGridViewRow>();
             foreach (DataGridViewRow i in Main_menu.dataGridView1.Rows)
             {
-                if (int.Parse(i.Cells["Data_create"].Value.ToString().Split('.')[2]) <= god_zadan)
-                    Main_menu.dataGridView1.Rows[i.Index].DefaultCellStyle.BackColor = Color.Red;
+                if (i.Cells["Name_writer"].Value.ToString() == Name_writer.Text)
+                {
+                    list.Add(i);
+                    table.Table222.Rows.Add(i.Cells["ID"].Value.ToString(), i.Cells["Name_book"].Value.ToString(), i.Cells["Name_writer"].Value.ToString(), i.Cells["Data_create"].Value.ToString(), i.Cells["Nom_stel"].Value.ToString(), i.Cells["Nom_shkaf"].Value.ToString(), i.Cells["Nom_polki"].Value.ToString());
+                }
+                
+            }
+          
+            if (list.Count == 0)
+            {
+                MessageBox.Show("Такого автора нет в библиотеке");
+                return;
+            }
+            else
+            {
+                table.ShowDialog();
             }
         }
+
+
     }
+
+    
 }

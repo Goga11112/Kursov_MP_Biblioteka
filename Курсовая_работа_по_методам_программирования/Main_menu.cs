@@ -34,17 +34,22 @@ namespace Курсовая_работа_по_методам_программир
         {
             InitializeComponent();
 
-            for (int i = 0; i < 10; i++)
-            {
-                dataGridView1.Rows.Add()
-            }
+            
+                dataGridView1.Rows.Add(1,"Зелёная миля", "Стивен Кинг","11.12.1996",111,23,10);
+                dataGridView1.Rows.Add(2, "Абли-баба", "Стивен Кинг", "11.12.2000", 11, 13, 10);
+                dataGridView1.Rows.Add(3, "Черный клевер", "Стивен Кинг", "11.12.1999", 1, 1, 10);
+                dataGridView1.Rows.Add(4, "Черная рука", "Стивен Кинг", "11.12.1980", 110, 13, 10);
+                dataGridView1.Rows.Add(5, "Заводной механизм", "Стивен Кинг", "11.12.1970", 100, 23, 10);
+                dataGridView1.Rows.Add(6, "Как долго летала пчела", "Стивен Кинг", "11.12.1976", 101, 23, 10);
+                dataGridView1.Rows.Add(7, "Почему упал самолет", "Стивен Кинг", "11.12.1989", 200, 12, 10);
+
         }
         private void Добавить_Click(object sender, EventArgs e)
         {
             Addendum Addendum = new Addendum(this);
             Addendum.ShowDialog();
-
-            dataGridView1.Rows.Add(Addendum.row);
+            
+            dataGridView1.Rows.Add(Addendum.row); 
         }
 
         private void добавитьToolStripMenuItem_Click(object sender, EventArgs e)
@@ -145,8 +150,50 @@ namespace Курсовая_работа_по_методам_программир
 
         private void поКритериямToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Form2 form2 = new Form2(this);
+            data_search form2 = new data_search(this);
             form2.ShowDialog();
+        }
+
+        private void About_book_Click(object sender, EventArgs e)
+        {   
+            Form2 form = new Form2(this);
+            form.ShowDialog();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                int flag = 0;
+                int min = 10000;
+                List<DataGridViewRow> list = new List<DataGridViewRow>();
+                Random random = new Random();
+                foreach (DataGridViewRow i in dataGridView1.Rows)
+                {
+                    if (i.Cells["Data_create"].Value != null)
+                    {
+                        if (int.Parse(i.Cells["Data_create"].Value.ToString().Split('.')[2]) < min)
+                        {
+                            min = int.Parse(i.Cells["Data_create"].Value.ToString().Split('.')[2]);
+                            flag = i.Index;
+                        }
+                    }
+                    else 
+                        dataGridView1.Rows.RemoveAt(i.Index);
+                }
+                dataGridView1.Rows[flag].Cells["Nom_stel"].Value = random.Next(1, 100);
+                dataGridView1.Rows[flag].Cells["Nom_shkaf"].Value = random.Next(1, 10);
+                dataGridView1.Rows[flag].Cells["Nom_polki"].Value = random.Next(1, 10);
+            }
+            catch
+            {
+                MessageBox.Show("Данные не найдены");
+            }
+        }
+
+        private void управлениеToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
         }
     }
    

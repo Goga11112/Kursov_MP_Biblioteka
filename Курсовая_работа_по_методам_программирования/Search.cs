@@ -31,16 +31,21 @@ namespace Курсовая_работа_по_методам_программир
 
         private void button1_Click(object sender, EventArgs e)
         {
-                for (int i = 0; i < Main_menu.dataGridView1.RowCount; i++)
+            int j = 0;
+            List<DataGridViewRow> list = new List<DataGridViewRow>();
+            foreach (DataGridViewRow i in Main_menu.dataGridView1.Rows)
+            {
+                if ((i.Cells["Name_book"].Value.ToString() == Name_book.Text) && (i.Cells["Name_writer"].Value.ToString() == Name_writer.Text))
                 {
-                    Main_menu.dataGridView1.Rows[i].Selected = false;
-                        if (Main_menu.dataGridView1.Rows[i].Cells[2].Value != null)
-                            if (Main_menu.dataGridView1.Rows[i].Cells[2].Value.ToString().Contains(textBox1.Text))
-                            {
-                                Main_menu.dataGridView1.Rows[i].Selected = true;
-                                break;
-                            }
+                    MessageBox.Show("Книга находится на " + i.Cells["Nom_stel"].Value.ToString() + " стеллаже, в " + i.Cells["Nom_shkaf"].Value.ToString() + " шкафу, на " + i.Cells["Nom_polki"].Value.ToString() + " полке");
+                    j++;
                 }
+            }
+            if (j == 0) 
+            {
+                MessageBox.Show("Данной книги не найдено");
+            }
+            j = 0;
         }
     }
 }
